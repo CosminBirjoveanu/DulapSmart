@@ -11,6 +11,6 @@ include_directories(Interface
 
 find_package(Threads REQUIRED)
 
-add_executable(SmartDrobe Main/main.cpp)
+add_executable(SmartDrobe Main/main.cpp Services/Services.h Services/Services.cpp)
 
 target_link_libraries(SmartDrobe PRIVATE Threads::Threads -lpistache)
