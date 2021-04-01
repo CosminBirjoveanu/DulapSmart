@@ -1,0 +1,1 @@
+//master class tasked with handling the app's interface (communicates with the services class)
