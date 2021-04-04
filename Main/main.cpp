@@ -1,12 +1,12 @@
-#include <pistache/endpoint.h>
-#include <nlohmann/json.hpp>
-
-using json = nlohmann::json;
-using namespace Pistache;
-
+#include <../Services/JSONHandler.cpp>
 //main app class - driver
 
-int main(int argc, char **argv) {
-
+int main(int argc, char **argv) { //adaugare parametrii linie de comanda
+    //Testare functionalitate JSONHandler
+    /*ifstream file("../Repositories/TestInput.json");
+    string s =  JSONHandler::parseJSONFromFile(file);
+    cout << s;
+    file.close();
+     */
     return 0;
 }
