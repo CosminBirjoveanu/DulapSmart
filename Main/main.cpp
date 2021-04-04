@@ -6,7 +6,7 @@ using namespace Pistache;
 
 //main app class - driver
 
-int main() {
+int main(int argc, char **argv) {
 
     return 0;
 }
