@@ -10,6 +10,9 @@
 class JSONHandler {
 public:
     static string parseJSONFromFile(ifstream&);
+    static string parseJSON(json);
+    static json getJSONFromString(string);
+    static json getJSONFromFile(ifstream&);
 };
 
 
