@@ -1,8 +1,10 @@
 #include <pistache/endpoint.h>
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
+using namespace Pistache;
 
 //main app class - driver
-
-using namespace Pistache;
 
 int main() {
 
