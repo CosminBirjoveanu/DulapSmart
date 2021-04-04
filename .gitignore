@@ -1,6 +1,2 @@
 /cmake-build-debug/
-/.idea/.gitignore
-/.idea/misc.xml
-/.idea/vcs.xml
-/.idea/SmartDrobe.iml
-/.idea/modules.xml
+/.idea/
