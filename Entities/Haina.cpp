@@ -14,7 +14,7 @@ Haina::Haina(string denumire, PiesaVestimentara piesaV, Culoare culoare, Stil st
 
 }
 
-bool Haina:: verificarePotrivire(Culoare culoare, Stil stil, float temperatura, bool precipitatii){
+bool Haina:: verificarePotrivire(Culoare culoare, Stil stil, float temperatura){
     switch(culoare){
         case Rosu:
             if(this->culoare==Portocaliu || this->culoare ==Mov)
@@ -38,16 +38,34 @@ bool Haina:: verificarePotrivire(Culoare culoare, Stil stil, float temperatura, 
             break;
     }
 
+    if(this->stil!=stil)
+        return false;
 
-    //cum decid potrivirea culorilor?
-    //acelasi stil; poate fi o haina potrivita pt mai multe stiluri?
-    //jacheta pt < 20 grade
-    //jacheta pt ploaie
-    //stilul tb sa se potriveasca
-    //materialul tb sa fie cel potrivit pt temperatura: fct bool -switch case de verificare a materialului
-    //culoarea sa se potriveasca
+    if(temperatura>20){
+        switch(material){
+            case fas:
+                return false;
 
+            case lana:
+                return false;
+
+            case stofa:
+                return false;
+        }
+
+    }else if(temperatura<15){
+        switch(material){
+            case in:
+                return false;
+
+            case matase:
+                return false;
+
+        }
+    }
+    return true;
 }
+
 string Haina::afisare(){
     string str=denumire+" ";
     switch (piesaVestimentara) {

@@ -28,15 +28,15 @@ public:
      void setCuloare(PiesaVestimentara piesaVestimentara){this->piesaVestimentara=piesaVestimentara;}
      Culoare getCuloare(){return culoare;}
      void setCuloare(Culoare culoare){this->culoare=culoare;}
-     Stil getStiluri(){return stil;};
-     void setStiluri(Stil stil){this->stil=stil;}
+     Stil getStil(){return stil;};
+     void setStil(Stil stil){this->stil=stil;}
      Material getMaterial(){return material;}
      void setMaterial(Material material){this->material=material;}
      int getNrPurtari(){return nrPurtari;}
      void setNrPurtari(int nr_purtari){this->nrPurtari=nr_purtari;}
      bool getDisponibilitate(){return disponibil;}
      void setDisponibilitate(bool disp){this->disponibil=disp;}
-     bool verificarePotrivire(Culoare culoare, Stil stil, float temperatura, bool precipitatii);
+     bool verificarePotrivire(Culoare culoare, Stil stil, float temperatura);
      string afisare();
 
 };
