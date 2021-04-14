@@ -3,3 +3,145 @@
 //
 
 #include "Haina.h"
+Haina::Haina(string denumire, PiesaVestimentara piesaV, Culoare culoare, Stil stil, Material material){
+    this->denumire=denumire;
+    this->piesaVestimentara=piesaV;
+    this->culoare=culoare;
+    this->stil=stil;
+    this->material=material;
+    this->nrPurtari=0;
+    this->disponibil=true;
+
+}
+
+bool Haina:: verificarePotrivire(Culoare culoare, Stil stil, float temperatura, bool precipitatii){
+    switch(culoare){
+        case Rosu:
+            if(this->culoare==Portocaliu || this->culoare ==Mov)
+                return false;
+            break;
+        case Mov:
+            if(this->culoare==Portocaliu || this->culoare ==Rosu)
+                return false;
+            break;
+        case Negru:
+            if(this->culoare==Bleumarin)
+                return false;
+            break;
+        case Bleumarin:
+            if(this->culoare==Negru)
+                return false;
+            break;
+        case Portocaliu:
+            if(this->culoare==Rosu || this->culoare ==Mov)
+                return false;
+            break;
+    }
+
+
+    //cum decid potrivirea culorilor?
+    //acelasi stil; poate fi o haina potrivita pt mai multe stiluri?
+    //jacheta pt < 20 grade
+    //jacheta pt ploaie
+    //stilul tb sa se potriveasca
+    //materialul tb sa fie cel potrivit pt temperatura: fct bool -switch case de verificare a materialului
+    //culoarea sa se potriveasca
+
+}
+string Haina::afisare(){
+    string str=denumire+" ";
+    switch (piesaVestimentara) {
+        case jacheta:
+            str+="jacheta ";
+            break;
+        case top:
+            str+="top ";
+            break;
+        case pantaloni:
+            str+="pantaloni/fusta ";
+            break;
+        case piesaUnica:
+            str+="o piesa ";
+            break;
+
+    }
+    switch (culoare) {
+        case Alb:
+            str+="alb ";
+            break;
+        case Negru:
+            str+="negru ";
+            break;
+        case Albastru:
+            str+="albastru ";
+            break;
+        case Rosu:
+            str+="rosu ";
+            break;
+        case Verde:
+            str+="verde ";
+            break;
+        case Portocaliu:
+            str+="portocaliu ";
+            break;
+        case Mov:
+            str+="mov ";
+            break;
+        case Bleumarin:
+            str+="bleumarin ";
+            break;
+        case Bej:
+            str+="Bej ";
+            break;
+        case Maro:
+            str+="maro ";
+            break;
+    }
+
+
+        switch (stil) {
+            case casual:
+                str+="casual ";
+                break;
+            case sport:
+                str+="sport ";
+                break;
+            case formal:
+                str+="formal ";
+                break;
+            case business:
+                str+="business ";
+                break;
+
+        }
+
+    switch (material) {
+        case poliester:
+            str+="poliester ";
+            break;
+        case stofa:
+            str+="stofa ";
+            break;
+        case bumbac:
+            str+="bumbac ";
+            break;
+        case denim:
+            str+="denim ";
+            break;
+        case matase:
+            str+="matase ";
+            break;
+        case in:
+            str+="in ";
+            break;
+        case lana:
+            str+="lana ";
+            break;
+        case fas:
+            str+="fas ";
+            break;
+    }
+    str+="nr purtari:"+to_string(nrPurtari)+" ";
+    disponibil? str+="disponibil": str+="indisponibil";
+    return str;
+}
