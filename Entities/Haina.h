@@ -25,7 +25,7 @@ public:
     string getDenumire(){return denumire;}
      void setDenumire(string denumire){this->denumire=denumire;}
      PiesaVestimentara getPiesaVestimentara(){return piesaVestimentara;}
-     void setCuloare(PiesaVestimentara piesaVestimentara){this->piesaVestimentara=piesaVestimentara;}
+     void setPiesaVestimentara(PiesaVestimentara piesaVestimentara){this->piesaVestimentara=piesaVestimentara;}
      Culoare getCuloare(){return culoare;}
      void setCuloare(Culoare culoare){this->culoare=culoare;}
      Stil getStil(){return stil;};
@@ -38,6 +38,7 @@ public:
      void setDisponibilitate(bool disp){this->disponibil=disp;}
      bool verificarePotrivire(Culoare culoare, Stil stil, float temperatura);
      string afisare();
+     bool operator ==(Haina h);
 
 };
 

@@ -163,3 +163,6 @@ string Haina::afisare(){
     disponibil? str+="disponibil": str+="indisponibil";
     return str;
 }
+bool Haina::operator ==(Haina h){
+    return denumire==h.denumire&& culoare==h.culoare && material==h.material && stil==h.stil && piesaVestimentara==h.piesaVestimentara;
+}
