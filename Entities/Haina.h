@@ -22,6 +22,7 @@ private:
 
 public:
     Haina(string denumire, PiesaVestimentara piesaV, Culoare culoare, Stil stil, Material material);
+    Haina()=default;
     string getDenumire(){return denumire;}
      void setDenumire(string denumire){this->denumire=denumire;}
      PiesaVestimentara getPiesaVestimentara(){return piesaVestimentara;}
