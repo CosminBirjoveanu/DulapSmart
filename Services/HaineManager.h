@@ -20,6 +20,7 @@ public:
     void vizualizareHaina(Haina haina);
     void stergereHaina(Haina haina);
     HaineManager(map<int,Haina> h, int nr);
+    void generareTinuta(float temperatura, bool precipitatii, Stil stil);
 
 };
 
