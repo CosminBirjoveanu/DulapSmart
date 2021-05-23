@@ -5,10 +5,10 @@
 #ifndef SMARTDROBE_HAINA_H
 #define SMARTDROBE_HAINA_H
 
-enum Culoare{Alb, Negru, Albastru, Verde, Galben, Rosu, Portocaliu, Bleumarin, Gri, Bej, Maro, Mov};
-enum Stil{casual, sport, business, formal};
-enum Material{poliester, bumbac, stofa, denim, matase, in, fas, lana};
-enum PiesaVestimentara{jacheta, top, pantaloni, piesaUnica};
+enum Culoare{null_culoare,Alb, Negru, Albastru, Verde, Galben, Rosu, Portocaliu, Bleumarin, Gri, Bej, Maro, Mov};
+enum Stil{null_stil,casual, sport, business, formal};
+enum Material{null_material,poliester, bumbac, stofa, denim, matase, in, fas, lana};
+enum PiesaVestimentara{null_piesa,jacheta, top, pantaloni, piesaUnica};
 
 class Haina {
 private:
