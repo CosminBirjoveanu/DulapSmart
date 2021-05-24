@@ -26,5 +26,4 @@ void DulapManager::sprayThread(int timer, Consumable& c){
             std::this_thread::sleep_for(std::chrono::seconds(timer));
         else break;
     }
-    std::cout << "I died tragically. \n";
 }
