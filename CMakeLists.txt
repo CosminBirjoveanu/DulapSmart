@@ -4,7 +4,7 @@ project(SmartDrobe)
 set(CMAKE_CXX_STANDARD 17)
 
 include_directories(Interface
-        Data/Entities/Entities
+        Entities
         Repositories
         Services
         )
