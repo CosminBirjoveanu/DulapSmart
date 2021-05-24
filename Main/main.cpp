@@ -1,4 +1,5 @@
 #include <../Services/JSONHandler.cpp>
+#include <../Controller/Server.h>
 #include "Haina.h"
 #include "HaineManager.h"
 #include "SearchEngine.h"
@@ -16,6 +17,35 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     cout << s;
     file.close();
      */
+
+    sigset_t signals;
+    if (sigemptyset(&signals) != 0
+        || sigaddset(&signals, SIGTERM) != 0
+        || sigaddset(&signals, SIGINT) != 0
+        || sigaddset(&signals, SIGHUP) != 0
+        || pthread_sigmask(SIG_BLOCK, &signals, nullptr) != 0) {
+        perror("install signal handler failed");
+        return 1;
+    }
+
+    Port port(8080);
+    int thr = 2;
+    Address addr(Ipv4::any(), port);
+
+    Server stats(addr);
+    stats.init(thr);
+    stats.start();
+
+    int signal = 0;
+    int status = sigwait(&signals, &signal);
+    if (status == 0)
+    {
+        std::cout << "received signal " << signal << std::endl;
+    }
+    else
+    {
+        std::cerr << "sigwait returns " << status << std::endl;
+    }
 
     Haina h1("geaca verde", jacheta, Verde, casual, stofa);
     Haina h2("rochie rosie", piesaUnica, Rosu, formal, matase);
@@ -113,6 +143,9 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 //    for ( auto &item :hm.getHaine())
 //        cout<<item.second.afisare()<<'\n';
 //    hm.generareTinuta(22, false,casual);
+
+
+    stats.stop();
 
     return 0;
 }
