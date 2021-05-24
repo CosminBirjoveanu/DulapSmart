@@ -4,8 +4,8 @@
 
 #ifndef SMARTDROBE_HAINEMANAGER_H
 #define SMARTDROBE_HAINEMANAGER_H
-#include "Haina.cpp"
-#include"Umeras.h"
+#include "../Entities/Haina.h"
+#include"../Entities/Umeras.h"
 #define NRUMERASE 20
 class HaineManager {
 private:
