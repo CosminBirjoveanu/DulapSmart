@@ -25,4 +25,4 @@ endif()
 
 add_executable(SmartDrobe Main/main.cpp Entities/Consumable.cpp Entities/Consumable.h Controller/Server.cpp Controller/Server.h)
 
-target_link_libraries(SmartDrobe PRIVATE Threads::Threads -lpistache PRIVATE nlohmann_json::nlohmann_json)
+target_link_libraries(SmartDrobe PRIVATE curl Threads::Threads -lpistache PRIVATE nlohmann_json::nlohmann_json)
