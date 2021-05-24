@@ -6,6 +6,7 @@
 #include "SearchEngine.cpp"
 #include "DulapManager.h"
 #include "DulapManager.cpp"
+#include "Interface.cpp"
 #include <string>
 #include <thread>
 #include <map>
@@ -14,7 +15,7 @@
 int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     //Testare functionalitate JSONHandler
     /*ifstream file("../Repositories/TestInput.json");
-    string s =  JSONHandler::parseJSONFromFile(file);+
+    string s =  JSONHandler::parseJSONFromFile(file);
     cout << s;
     file.close();
      */
@@ -169,6 +170,8 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 //        cout<<item.second.afisare()<<'\n';
 //    hm.generareTinuta(22, false,casual);
 
+CLI *cli=new CLI();
+cli->mainMenu(0);
 */
 
     stats.stop();

@@ -7,7 +7,7 @@
 class Umeras{
 private:
     static double greutateDefault;
-    static int index;
+    int index;
     double greutateHaina;
 public:
     Umeras(int idx);
@@ -16,5 +16,15 @@ public:
     double getGreutate(){return greutateHaina;}
     void setGreutate(double greutate){this->greutateHaina=greutate;}
     bool verificareUmerasGol() const;
+    struct UmerasCompare
+    {
+        bool operator() (const Umeras& umstg, const Umeras& umdr) const
+        {
+            return umstg.index < umdr.index;
+        }
+    };
+
+
+
 };
 #endif //SMARTDROBE_UMERAS_H
