@@ -56,6 +56,7 @@ void CLI::mainMenu(const int &menuPage) {
                     }
                 }
             }
+            break;
         case 1:
             int weatherFilter = 0;
             int eventFilter = 0;
@@ -107,8 +108,11 @@ void CLI::mainMenu(const int &menuPage) {
                              "Atenție! Dacă tastezi un număr ce nu corespunde niciunei descrieri, nu voi putea aplica niciun filtru! ";
                 std::cin >> eventFilter;
             }
+            break;
         case 2: //nu tine de menu interface, te trimite la aplicatia/ site ul cu prognoze
+            break;
         case 3: //nu tine de menu interface, te trimite la evenimentele din Google Calendar
+            break;
         case 4:
             int contentAction = 0;
             if(this->lang == en) {
@@ -147,8 +151,11 @@ void CLI::mainMenu(const int &menuPage) {
                     }
                 }
             }
+            break;
         case 5: //metoda de a afisa umerasele cu status liber/ ocupat
+            break;
         case 6: //vezi starea consumabilelor?
+            break;
     }
     mainMenu(newPage);
 }
