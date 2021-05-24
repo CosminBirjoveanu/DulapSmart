@@ -9,6 +9,7 @@
 #include <string>
 #include <thread>
 #include <map>
+#include <curl/curl.h>
 
 int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     //Testare functionalitate JSONHandler
@@ -46,6 +47,30 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     {
         std::cerr << "sigwait returns " << status << std::endl;
     }
+
+    CURL *curl;
+    CURLcode res;
+
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+
+    curl = curl_easy_init();
+    if (curl){
+        curl_easy_setopt(curl, CURLOPT_URL, "pro.openweathermap.org/data/2.5/weather?q=Bucharest,ro&APPID=e564a233be5f06b32ca4763b2bcda304");
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+       // curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void*) &json);
+
+        res = curl_easy_perform(curl);
+
+        std::cout << "\n" << curl;
+        if (res != CURLE_OK) {
+            std::cout << stderr << " curl failed\n" << curl_easy_strerror(res);
+        }
+        curl_easy_cleanup(curl);
+    }
+    curl_global_cleanup();
+
+    /*
 
     Haina h1("geaca verde", jacheta, Verde, casual, stofa);
     Haina h2("rochie rosie", piesaUnica, Rosu, formal, matase);
@@ -144,6 +169,7 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 //        cout<<item.second.afisare()<<'\n';
 //    hm.generareTinuta(22, false,casual);
 
+*/
 
     stats.stop();
 
