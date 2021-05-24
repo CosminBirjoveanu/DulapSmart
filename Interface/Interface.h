@@ -6,7 +6,7 @@ enum language {en, ro};
 class Interface {
 
 protected:
-    language lang;
+    language lang=ro;
 public:
     virtual void mainMenu(const int &menuPage) = 0;
 //    virtual void checkRecommendations() = 0;

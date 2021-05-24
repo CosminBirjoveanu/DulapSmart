@@ -10,6 +10,7 @@ void HaineManager::introducereHaina(string denumire, PiesaVestimentara piesa, Cu
     for(auto &item: haine){
         if(item.first.verificareUmerasGol()){
             haine.insert(pair<Umeras, Haina>(item.first, haina));
+
             ok=1;
             break;
         }
@@ -43,7 +44,8 @@ void HaineManager::stergereHaina(Haina haina){
     //haine.erase(umeras);
 }
 HaineManager::HaineManager( int nr){
-    map<Umeras, Haina> h;
+    //map<Umeras, Haina> h;
+    map<Umeras, Haina, Umeras::UmerasCompare> h;
     for(int i=1;i<=nr;i++){
         haine.insert(pair<Umeras, Haina>(Umeras(i),Haina()));
     }
