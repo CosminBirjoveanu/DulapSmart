@@ -20,8 +20,6 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     file.close();
      */
 
-    int itsmylife;
-
     sigset_t signals;
     if (sigemptyset(&signals) != 0
         || sigaddset(&signals, SIGTERM) != 0
