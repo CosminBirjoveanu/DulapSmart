@@ -3,7 +3,10 @@
 #include "HaineManager.h"
 #include "SearchEngine.h"
 #include "SearchEngine.cpp"
+#include "DulapManager.h"
+#include "DulapManager.cpp"
 #include <string>
+#include <thread>
 #include <map>
 
 int main(int argc, char **argv) { //adaugare parametrii linie de comanda
@@ -84,6 +87,14 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
         std::cout << t.first << " " << t.second.afisare();
     std::cout <<"\n";
 
+    DulapManager DM("Dezinfectant", "Parfum");
+    DM.getApa().setFull();
+    std::thread t1 = std::thread(&DulapManager::sprayThread, &DM, 0.2, std::ref(DM.getApa()));
+
+    DM.getDezinfectant().setFull();
+    std::thread t2 = std::thread(&DulapManager::sprayThread, &DM, 0.1, std::ref(DM.getDezinfectant()));
+    t1.join();
+    t2.join();
 //    cout<<(haine.find(3)==haine.end());
 //    haine.erase(2);
 //    haine.find(1)->second.setCuloare(Mov);

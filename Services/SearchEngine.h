@@ -13,7 +13,7 @@ public:
     map<int,Haina> cautare(map<int,Haina> haine, PiesaVestimentara piesa);
     map<int,Haina> cautare(map<int,Haina> haine, Culoare culoare);
     map<int,Haina> cautare(map<int,Haina> haine, Stil stil);
-    map<int,Haina> cautare(map<int,Haina>, Material material);
+    map<int,Haina> cautare(map<int,Haina> haine, Material material);
 };
 
 #endif //SMARTDROBE_SEARCHENGINE_H
