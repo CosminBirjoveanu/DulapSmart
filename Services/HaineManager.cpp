@@ -10,7 +10,7 @@ void HaineManager::introducereHaina(string denumire, PiesaVestimentara piesa, Cu
     for(auto &item: haine){
         if(item.first.verificareUmerasGol()){
             haine.insert(pair<Umeras, Haina>(item.first, haina));
-
+            haineSalvate.push_back(haina);
             ok=1;
             break;
         }
@@ -30,6 +30,19 @@ void HaineManager::editareHaina(Haina haina, string denumire, PiesaVestimentara 
             item.second.setMaterial(mat);
         }
     }
+    list<Haina>::iterator it;
+    for(it=haineSalvate.begin();it!=haineSalvate.end();it++){
+        if(it->getDenumire()==haina.getDenumire()&&it->getCuloare()==haina.getCuloare()&&it->getMaterial()==haina.getMaterial()&&it->getStil()==haina.getStil()&&it->getPiesaVestimentara()==haina.getPiesaVestimentara()){
+            it->setDenumire(denumire);
+            it->setPiesaVestimentara(piesa);
+            it->setCuloare(cul);
+            it->setMaterial(mat);
+            it->setStil(stil);
+
+
+        }
+
+    }
 
 }
 void HaineManager::vizualizareHaina(Haina haina){
@@ -41,10 +54,17 @@ void HaineManager::stergereHaina(Haina haina){
         if(item.second==haina)
             haine.erase(item.first);
     }
-    //haine.erase(umeras);
+    list<Haina>::iterator it;
+    for(it=haineSalvate.begin();it!=haineSalvate.end();it++){
+        if(it->getDenumire()==haina.getDenumire()&&it->getCuloare()==haina.getCuloare()&&it->getMaterial()==haina.getMaterial()&&it->getStil()==haina.getStil()&&it->getPiesaVestimentara()==haina.getPiesaVestimentara()){
+            haineSalvate.erase(it);
+        }
+    }
+
+            //haine.erase(umeras);
 }
 HaineManager::HaineManager( int nr){
-    //map<Umeras, Haina> h;
+
     map<Umeras, Haina, Umeras::UmerasCompare> h;
     for(int i=1;i<=nr;i++){
         haine.insert(pair<Umeras, Haina>(Umeras(i),Haina()));
@@ -110,6 +130,11 @@ void HaineManager::generareTinuta(float temperatura, bool precipitatii, Stil sti
                                 haine_alese[nr_haine] = haina1;
                                 haina1.setDisponibilitate(false);
                                 haina1.setNrPurtari(haina1.getNrPurtari()+1);
+//                                for ( auto &item :haine){
+//                                    if(item.second==haina1)
+//                                        haine.insert(pair<Umeras, Haina>(item.first,Haina()));
+                                        //TODO: item.first.setGreutate(item.first.getGreutateDefault()); umerasul tbuie sa fie constanta ca sa fie cheie pt map, poate apela doar fct const, nu ii pot modifica greutatea!!
+                                //}
                                 nr_haine++;
                                 haine_alese[nr_haine] = haina2;
                                 haina2.setDisponibilitate(false);
@@ -134,6 +159,10 @@ void HaineManager::generareTinuta(float temperatura, bool precipitatii, Stil sti
         }
 
     }
+}
+
+void HaineManager::scoatereHaina(Haina haina){
+
 }
 //
 //void HaineManager::introducereHaina(string denumire, PiesaVestimentara piesa, Culoare cul, Stil stil, Material mat){
