@@ -10,8 +10,6 @@ enum Stil{null_stil,casual, sport, business, formal};
 enum Material{null_material,poliester, bumbac, stofa, denim, matase, in, fas, lana};
 enum PiesaVestimentara{null_piesa,jacheta, top, pantaloni, piesaUnica};
 
-
-
 class Haina {
 private:
     string denumire;
