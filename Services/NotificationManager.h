@@ -7,7 +7,9 @@
 
 
 class NotificationManager {
-
+public:
+    bool verificareInterval(time_t ultimaScoatere);
+    void trimitereNotificare(Haina h);
 };
 
 
