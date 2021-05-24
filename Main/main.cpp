@@ -3,10 +3,8 @@
 #include "Haina.h"
 #include "HaineManager.h"
 #include "SearchEngine.h"
-#include "SearchEngine.cpp"
 #include "DulapManager.h"
-#include "DulapManager.cpp"
-#include "Interface.cpp"
+#include "Interface.h"
 #include <string>
 #include <thread>
 #include <map>
@@ -38,17 +36,6 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     stats.init(thr);
     stats.start();
 
-    int signal = 0;
-    int status = sigwait(&signals, &signal);
-    if (status == 0)
-    {
-        std::cout << "received signal " << signal << std::endl;
-    }
-    else
-    {
-        std::cerr << "sigwait returns " << status << std::endl;
-    }
-
     CURL *curl;
     CURLcode res;
 
@@ -70,6 +57,17 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
         curl_easy_cleanup(curl);
     }
     curl_global_cleanup();
+
+    int signal = 0;
+    int status = sigwait(&signals, &signal);
+    if (status == 0)
+    {
+        std::cout << "received signal " << signal << std::endl;
+    }
+    else
+    {
+        std::cerr << "sigwait returns " << status << std::endl;
+    }
 
     /*
 
@@ -170,8 +168,8 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 //        cout<<item.second.afisare()<<'\n';
 //    hm.generareTinuta(22, false,casual);
 
-CLI *cli=new CLI();
-cli->mainMenu(0);
+    CLI *cli=new CLI();
+    cli->mainMenu(0);
 */
 
     stats.stop();
