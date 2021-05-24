@@ -1,5 +1,5 @@
 #include "Interface.h"
-
+#include "HaineManager.cpp"
 #include <stdio.h>
 #include <iostream>
 #include <limits>
@@ -141,7 +141,63 @@ void CLI::mainMenu(const int &menuPage) {
                 for (;;) {
                     std::cout << "Introdu numărul acțiunii ca să știu și eu ce faci! ";
                     if (std::cin >> contentAction && contentAction > 0 && contentAction < 4) {
-                        std::cout << "Succes!";
+                        swich (contentAction) {
+                            case 1:
+                                std::string nume;
+                                int culoare;
+                                int material;
+                                int stil;
+                                int piesa;
+                                std::cout << "Introdu denumirea articolului vestimentar: ";
+                                std::cin >> nume;
+                                for (;;) {
+                                    std::cout << "Alege culoarea articolului vestimentar: ";
+                                    std::cout << "1. Alb\n 2. Negru\n 3. Albastru\n 4. Verde\n 5. Galben\n "
+                                              << "6. Rosu\n 7. Portocaliu\n 8. Bleumarin\n 9. Gri\n 10. Bej\n 11. Maro\n 11. Mov\n";
+                                    if (std::cin >> culoare && culoare > 0 && culoare < 12) {
+                                        break;
+                                    }
+                                    else{
+                                        std::cin.clear();
+                                        std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+                                    }
+                                }
+                            for (;;) {
+                                std::cout << "Alege materialul articolului vestimentar: ";
+                                std::cout << "1. poliester\n 2. bumbac\n 3. stofa\n 4. denim\n 5. matase\n "
+                                          << "6. in\n 7. fas\n 8. lana\n";
+                                if (std::cin >> material && material > 0 && material < 9) {
+                                    break;
+                                }
+                                else{
+                                    std::cin.clear();
+                                    std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+                                }
+                            }
+                            for (;;) {
+                                std::cout << "Alege stilul articolului vestimentar: ";
+                                std::cout << "1. casual\n 2. sport\n 3. business\n 4. formal\n";
+                                if (std::cin >> stil && stil > 0 && stil < 5) {
+                                    break;
+                                }
+                                else{
+                                    std::cin.clear();
+                                    std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+                                }
+                            }
+                            for (;;) {
+                                std::cout << "Alege piesa articolului vestimentar: ";
+                                std::cout << "1. jacheta\n 2. top\n 3. pantaloni\n 4. piesa unica\n";
+                                if (std::cin >> piesa && piesa > 0 && piesa < 5) {
+                                    break;
+                                }
+                                else{
+                                    std::cin.clear();
+                                    std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+                                }
+                            }
+                            introducereHaina(nume,(PiesaVestimentara)piesa,(Culoare)culoare,(Stil)stil,(Material)material);
+                        }
                         break;
                     } else {
                         std::cout << "Te rog nu inventa acțiuni! \\342\\230\\272" << std::endl;

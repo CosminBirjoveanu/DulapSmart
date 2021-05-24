@@ -5,6 +5,7 @@
 #include "SearchEngine.cpp"
 #include "DulapManager.h"
 #include "DulapManager.cpp"
+#include "Interface.cpp"
 #include <string>
 #include <thread>
 #include <map>
@@ -114,6 +115,7 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 //        cout<<item.second.afisare()<<'\n';
 //    hm.generareTinuta(22, false,casual);
 
+mainMenu(0);
     return 0;
 }
 
