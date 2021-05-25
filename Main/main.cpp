@@ -1,13 +1,15 @@
 #include <../Services/JSONHandler.cpp>
 #include <../Controller/Server.h>
-#include "Haina.h"
-#include "HaineManager.h"
-#include "SearchEngine.h"
-#include "DulapManager.h"
-#include "Interface.h"
+//#include "../Entities/Haina.h"
+//#include "../Entities/Umeras.h"
+#include "../Services/HaineManager.h"
+#include "../Services/SearchEngine.h"
+#include "../Services/DulapManager.h"
+#include "../Interface/Interface.h"
 #include <string>
 #include <thread>
 #include <map>
+
 #include <curl/curl.h>
 
 int main(int argc, char **argv) { //adaugare parametrii linie de comanda
@@ -171,6 +173,16 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     CLI *cli=new CLI();
     cli->mainMenu(0);
 */
+HaineManager hm(4);
+hm.introducereHaina("geaca verde", jacheta, Verde, casual, stofa);
+for(auto &item: hm.getHaine()){
+    if(!(item.second==Haina()))
+        cout<<item.first.getIndex()<<": "<<item.second.afisare()<<'\n';
+}
+    list<Haina>::iterator it;
+    for(it=hm.getHaineSalvate().begin();it!=hm.getHaineSalvate().end();it++){
+        cout<<it->getDenumire()<<", ";
+        }
 
     stats.stop();
 

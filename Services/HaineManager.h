@@ -25,7 +25,7 @@ public:
     list<Haina> getHaineSalvate(){return haineSalvate;}
     HaineManager( int nr);
     void generareTinuta(float temperatura, bool precipitatii, Stil stil);
-
+    void adaugarePeUmeras(int indice);
 };
 
 
