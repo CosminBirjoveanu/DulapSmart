@@ -38,6 +38,8 @@ add_executable(SmartDrobe Main/main.cpp Entities/Consumable.cpp Entities/Consuma
         Controller/Server.h
         Services/NotificationManager.cpp
         Services/NotificationManager.h
+        Services/Logger.cpp
+        Services/Logger.h
         Services/ProfilDulap.cpp
         Services/ProfilDulap.h
         Services/RequestWrapper.cpp

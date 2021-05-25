@@ -5,6 +5,7 @@
 #include "../Services/HaineManager.h"
 #include "../Services/SearchEngine.h"
 #include "../Services/DulapManager.h"
+#include "../Services/Logger.h"
 #include "../Interface/Interface.h"
 #include <string>
 #include <thread>
@@ -149,12 +150,19 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     std::thread t2 = std::thread(&DulapManager::sprayThread, &DM, 0.1, std::ref(DM.getDezinfectant()));
     t1.join();
     t2.join();
-
+    Logger logger("logger.txt");
     HaineManager haineManager(20);
+    logger.log("Manager Haine Creat!");
     haineManager.introducereHaina(h1);
+    logger.log("Haina adaugata!");
     haineManager.introducereHaina(h2);
+    logger.log("Haina adaugata!");
     haineManager.introducereHaina(h3);
+    logger.log("Haina adaugata!");
+
     haineManager.editareHaina(h1, "helanca", top, Bej,casual, poliester);
+    logger.log("Haina Editata!");
+
     //CLI *cli=new CLI();
     //cli->mainMenu(0);
 
