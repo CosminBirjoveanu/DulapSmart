@@ -43,6 +43,11 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 
         std::cout << readBuffer;
 
+        json jsonBuffer = JSONHandler::getJSONFromString(readBuffer);
+        std::string::size_type sz;
+        double temperatura = std::stod(to_string(jsonBuffer["main"]["temp"]), &sz);
+        std::cout << "\nTemperatura este: " << temperatura << " C\n";
+
         if (res != CURLE_OK) {
             std::cout << stderr << " curl failed\n" << curl_easy_strerror(res);
         }
