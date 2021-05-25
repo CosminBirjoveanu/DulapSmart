@@ -36,10 +36,6 @@ add_executable(SmartDrobe Main/main.cpp Entities/Consumable.cpp Entities/Consuma
         Services/HaineListener.h
         Controller/Server.cpp
         Controller/Server.h
-        Services/HaineManager.cpp
-        Services/HaineManager.h
-        Services/JSONHandler.cpp
-        Services/JSONHandler.h
         Services/NotificationManager.cpp
         Services/NotificationManager.h
         Services/ProfilDulap.cpp
