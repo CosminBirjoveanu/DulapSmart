@@ -19,7 +19,7 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     cout << s;
     file.close();
      */
-
+/*
     sigset_t signals;
     if (sigemptyset(&signals) != 0
         || sigaddset(&signals, SIGTERM) != 0
@@ -172,19 +172,24 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 
     CLI *cli=new CLI();
     cli->mainMenu(0);
-*/
+
+
+    stats.stop();
+    */
 HaineManager hm(4);
-hm.introducereHaina("geaca verde", jacheta, Verde, casual, stofa);
-for(auto &item: hm.getHaine()){
-    if(!(item.second==Haina()))
-        cout<<item.first.getIndex()<<": "<<item.second.afisare()<<'\n';
-}
+
+    hm.introducereHaina("geaca verde", jacheta, Verde, casual, stofa);
+
+    for(auto &item: hm.getHaine()){
+        Haina h;
+        if(!(item.second==h))
+            cout<<item.first.getIndex()<<": "<<item.second.afisare()<<'\n';
+    }
+    cout<<hm.getHaineSalvate().size();
     list<Haina>::iterator it;
     for(it=hm.getHaineSalvate().begin();it!=hm.getHaineSalvate().end();it++){
         cout<<it->getDenumire()<<", ";
-        }
-
-    stats.stop();
+    }
 
     return 0;
 }

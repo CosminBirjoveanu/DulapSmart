@@ -1,41 +1,41 @@
 #include "SearchEngine.h"
 using namespace std;
-std::map<int,Haina> SearchEngine::cautare(std::map<int,Haina> haine, std::string nume) {
-    std::map<int,Haina> haineNume;
+std::map<Umeras, Haina, Umeras::UmerasCompare> SearchEngine::cautare(std::map<Umeras, Haina, Umeras::UmerasCompare> haine, std::string nume) {
+    std::map<Umeras, Haina, Umeras::UmerasCompare> haineNume;
     for (auto &item : haine)
         if(item.second.getDenumire().find(nume) != std::string::npos)
-            haineNume.insert(pair<int,Haina>(item.first, item.second));
+            haineNume.insert(pair<Umeras,Haina>(item.first, item.second));
     return haineNume;
 }
 
-map<int,Haina> SearchEngine::cautare(map<int,Haina> haine, PiesaVestimentara piesa) {
-    map<int,Haina> haineTip;
+map<Umeras, Haina, Umeras::UmerasCompare> SearchEngine::cautare(map<Umeras, Haina, Umeras::UmerasCompare> haine, PiesaVestimentara piesa) {
+    map<Umeras, Haina, Umeras::UmerasCompare> haineTip;
     for (auto &item : haine)
         if(item.second.getPiesaVestimentara() == piesa)
-            haineTip.insert(pair<int,Haina>(item.first, item.second));
+            haineTip.insert(pair<Umeras,Haina>(item.first, item.second));
     return haineTip;
 }
 
-map<int,Haina> SearchEngine::cautare(map<int,Haina> haine, Culoare culoare) {
-    map<int,Haina> haineCuloare;
+map<Umeras, Haina, Umeras::UmerasCompare> SearchEngine::cautare(map<Umeras, Haina, Umeras::UmerasCompare> haine, Culoare culoare) {
+    map<Umeras, Haina, Umeras::UmerasCompare> haineCuloare;
     for (auto &item : haine)
         if(item.second.getCuloare() == culoare)
-            haineCuloare.insert(pair<int,Haina>(item.first, item.second));
+            haineCuloare.insert(pair<Umeras, Haina>(item.first, item.second));
     return haineCuloare;
 }
 
-map<int,Haina> SearchEngine::cautare(map<int,Haina> haine, Stil stil) {
-    map<int,Haina> haineStil;
+map<Umeras, Haina, Umeras::UmerasCompare> SearchEngine::cautare(map<Umeras, Haina, Umeras::UmerasCompare> haine, Stil stil) {
+    map<Umeras, Haina, Umeras::UmerasCompare> haineStil;
     for (auto &item : haine)
         if(item.second.getStil() == stil)
-            haineStil.insert(pair<int,Haina>(item.first, item.second));
+            haineStil.insert(pair<Umeras, Haina>(item.first, item.second));
     return haineStil;
 }
 
-map<int,Haina> SearchEngine::cautare(map<int,Haina> haine, Material material) {
-    map<int,Haina> haineMaterial;
+map<Umeras, Haina, Umeras::UmerasCompare> SearchEngine::cautare(map<Umeras, Haina, Umeras::UmerasCompare> haine, Material material) {
+    map<Umeras, Haina, Umeras::UmerasCompare> haineMaterial;
     for (auto &item : haine)
         if(item.second.getMaterial() == material)
-            haineMaterial.insert(pair<int,Haina>(item.first, item.second));
+            haineMaterial.insert(pair<Umeras, Haina>(item.first, item.second));
     return haineMaterial;
 }
