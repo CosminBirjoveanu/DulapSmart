@@ -4,27 +4,26 @@
 
 #ifndef SMARTDROBE_UMERAS_H
 #define SMARTDROBE_UMERAS_H
+
+#include "Haina.h"
+
 class Umeras{
 private:
-    static double greutateDefault;
     int index;
     double greutateHaina;
+    Haina* haina;
+
 public:
+    friend class SearchEngine;
     Umeras(int idx);
     Umeras()=default;
     int getIndex() const {return index;}
+    Haina* getHaina()  {return haina;}
     double getGreutate(){return greutateHaina;}
     void setGreutate(double greutate){this->greutateHaina=greutate;}
+    void setGreutateDefault(){this->greutateHaina=0;}
     bool verificareUmerasGol() const;
-    struct UmerasCompare
-    {
-        bool operator() (const Umeras& umstg, const Umeras& umdr) const
-        {
-            return umstg.index < umdr.index;
-        }
-    };
-
-
-
+    void setHaina(Haina*);
 };
+
 #endif //SMARTDROBE_UMERAS_H

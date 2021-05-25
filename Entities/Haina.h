@@ -25,7 +25,7 @@ private:
 
 public:
     Haina(std::string denumire, PiesaVestimentara piesaV, Culoare culoare, Stil stil, Material material);
-    Haina()=default;
+    Haina(){denumire="";piesaVestimentara=null_piesa;material=null_material;culoare=null_culoare;stil=null_stil;disponibil= false;ultimaScoatere= time(0);};
     std::string getDenumire(){return denumire;}
     void setDenumire(std::string denumire){this->denumire=denumire;}
     PiesaVestimentara getPiesaVestimentara(){return piesaVestimentara;}
@@ -38,6 +38,7 @@ public:
     void setMaterial(Material material){this->material=material;}
     int getNrPurtari(){return nrPurtari;}
     void setNrPurtari(int nr_purtari){this->nrPurtari=nr_purtari;}
+    void incrNrPurtari(){this->nrPurtari++;}
     bool getDisponibilitate(){return disponibil;}
     void setDisponibilitate(bool disp){this->disponibil=disp;}
     time_t getUltimaScoatere(){return ultimaScoatere;}
