@@ -8,8 +8,9 @@
 void HaineManager::introducereHaina(std::string denumire, PiesaVestimentara piesa, Culoare cul, Stil stil, Material mat){
     Haina haina(denumire, piesa, cul, stil, mat);
     int ok=0;
+    Haina haina_nula;
     for(auto &item: haine){
-        if(item.second==Haina()){
+        if(item.second==haina_nula){
             haine.insert(std::pair<Umeras, Haina>(item.first, haina));
             haineSalvate.push_back(haina);
             ok=1;
@@ -67,10 +68,11 @@ void HaineManager::stergereHaina(Haina haina){
 HaineManager::HaineManager( int nr){
 
     std::map<Umeras, Haina, Umeras::UmerasCompare> h;
+    Haina haina_nula;
     for(int i=1;i<=nr;i++){
-        haine.insert(std::pair<Umeras, Haina>(Umeras(i),Haina()));
+        haine.insert(std::pair<Umeras, Haina>(Umeras(i),haina_nula));
     }
-    haine.swap(h);
+    //haine.swap(h);
     this->nrUmerase=nr;
 }
 /*
@@ -85,8 +87,9 @@ void HaineManager::generareTinuta(float temperatura, bool precipitatii, Stil sti
 
     Haina h[haine.size()];
     int i=0;
+    Haina haina_nula;
     for ( auto &item :haine){
-        if(!(item.second==Haina())){
+        if(!(item.second==haina_nula)){
             h[i]=item.second;
             i++;
         }
@@ -145,7 +148,7 @@ void HaineManager::generareTinuta(float temperatura, bool precipitatii, Stil sti
                                 haina1.setNrPurtari(haina1.getNrPurtari()+1);
                                 for ( auto &item :haine){
                                     if(item.second==haina1)
-                                        haine.insert(std::pair<Umeras, Haina>(item.first,Haina()));
+                                        haine.insert(std::pair<Umeras, Haina>(item.first,haina_nula));
                                         //TODO: item.first.setGreutate(item.first.getGreutateDefault()); umerasul tbuie sa fie constanta ca sa fie cheie pt map, poate apela doar fct const, nu ii pot modifica greutatea!!
                                 }
                                 nr_haine++;
@@ -175,18 +178,20 @@ void HaineManager::generareTinuta(float temperatura, bool precipitatii, Stil sti
 }
 
 void HaineManager::scoatereHaina(Haina haina){
+    Haina haina_nula;
     for(auto &item :haine){
         if(item.second==haina){
             item.second.setNrPurtari(item.second.getNrPurtari()+1);
             item.second.setDisponibilitate(false);
-            haine.insert(std::pair<Umeras,Haina>(item.first,Haina()));
+            haine.insert(std::pair<Umeras,Haina>(item.first,haina_nula));
         }
     }
 }
 void HaineManager::adaugarePeUmeras(int indice){
     int ok=0;
+    Haina haina_nula;
     for(auto &item: haine){
-        if(item.second==Haina()){
+        if(item.second==haina_nula){
             std::list<Haina>::iterator it;
             int i=0;
             for(it=haineSalvate.begin();it!=haineSalvate.end();it++){

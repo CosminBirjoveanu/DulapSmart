@@ -54,13 +54,14 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 
     curl_global_cleanup();
 
+
     sigset_t signals;
     if (sigemptyset(&signals) != 0
         || sigaddset(&signals, SIGTERM) != 0
         || sigaddset(&signals, SIGINT) != 0
         || sigaddset(&signals, SIGHUP) != 0
         || pthread_sigmask(SIG_BLOCK, &signals, nullptr) != 0) {
-        perror(" install signal handler failed");
+        perror("install signal handler failed");
         return 1;
     }
 
@@ -184,17 +185,23 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 
     CLI *cli=new CLI();
     cli->mainMenu(0);
-*/
+
+    */
+
 HaineManager hm(4);
-hm.introducereHaina("geaca verde", jacheta, Verde, casual, stofa);
-for(auto &item: hm.getHaine()){
-    if(!(item.second==Haina()))
-        cout<<item.first.getIndex()<<": "<<item.second.afisare()<<'\n';
-}
+
+    hm.introducereHaina("geaca verde", jacheta, Verde, casual, stofa);
+
+    for(auto &item: hm.getHaine()){
+        Haina h;
+        if(!(item.second==h))
+            cout<<item.first.getIndex()<<": "<<item.second.afisare()<<'\n';
+    }
+    cout<<hm.getHaineSalvate().size();
     list<Haina>::iterator it;
     for(it=hm.getHaineSalvate().begin();it!=hm.getHaineSalvate().end();it++){
         cout<<it->getDenumire()<<", ";
-        }
+    }
 
     stats.stop();
 
