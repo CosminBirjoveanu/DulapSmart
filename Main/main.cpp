@@ -33,7 +33,7 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 
     curl = curl_easy_init();
     if (curl){
-        curl_easy_setopt(curl, CURLOPT_URL, "pro.openweathermap.org/data/2.5/weather?q=Bucharest,ro&APPID=e564a233be5f06b32ca4763b2bcda304");
+        curl_easy_setopt(curl, CURLOPT_URL, "pro.openweathermap.org/data/2.5/weather?q=Bucharest,ro&APPID=e564a233be5f06b32ca4763b2bcda304&units=metric");
         curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
         curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallBack);
