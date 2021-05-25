@@ -148,6 +148,7 @@ void CLI::mainMenu(const int &menuPage) {
                     if (std::cin >> contentAction && contentAction > 0 && contentAction < 4) {
                         switch (contentAction) {
                             case 1:
+                            {
                                 std::string nume;
                                 int culoare;
                                 int material;
@@ -198,8 +199,22 @@ void CLI::mainMenu(const int &menuPage) {
                                     }
                                 }
                                 hm.introducereHaina(nume, (PiesaVestimentara) piesa, (Culoare) culoare, (Stil) stil,(Material) material);
-                        }
                         break;
+                        }
+                        case 2:{
+//                                cout<<"Alege numarul umeului pe care se afla articolul vestimentar pe care vrei sa-l editezi!";
+//                                for(auto &item: hm.getHaine()){
+//                                    cout<<item.first.getIndex()<<" "<<item.second.afisare()<<'\n';
+//                                }
+//                                if (std::cin >> nrUmeras && nrUmeras > 0 && piesa < 5)
+//TODO
+
+                        }
+                        case 3:{
+
+                        }
+                    }
+                    break;
                     } else {
                         std::cout << "Te rog nu inventa acțiuni! \\342\\230\\272" << std::endl;
                         std::cout << "Ține minte! Numai acțiunile din lista mea sunt acceptate!" << std::endl;
@@ -210,6 +225,7 @@ void CLI::mainMenu(const int &menuPage) {
             }
             break;
         }
+
         case 5: //metoda de a afisa umerasele cu status liber/ ocupat
             break;
         case 6: //vezi starea consumabilelor?

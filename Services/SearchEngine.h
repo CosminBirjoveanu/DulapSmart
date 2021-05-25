@@ -9,11 +9,11 @@
 class SearchEngine {
 public:
     SearchEngine(){};
-    map<int,Haina> cautare(map<int,Haina> haine, string nume);
-    map<int,Haina> cautare(map<int,Haina> haine, PiesaVestimentara piesa);
-    map<int,Haina> cautare(map<int,Haina> haine, Culoare culoare);
-    map<int,Haina> cautare(map<int,Haina> haine, Stil stil);
-    map<int,Haina> cautare(map<int,Haina> haine, Material material);
+    std::map<int,Haina> cautare(std::map<int,Haina> haine, std::string nume);
+    std::map<int,Haina> cautare(std::map<int,Haina> haine, PiesaVestimentara piesa);
+    std::map<int,Haina> cautare(std::map<int,Haina> haine, Culoare culoare);
+    std::map<int,Haina> cautare(std::map<int,Haina> haine, Stil stil);
+    std::map<int,Haina> cautare(std::map<int,Haina> haine, Material material);
 };
 
 #endif //SMARTDROBE_SEARCHENGINE_H

@@ -9,6 +9,6 @@ bool NotificationManager::verificareInterval(time_t ultimaScoatere){
 }
 void NotificationManager::trimitereNotificare(Haina h){
     if(verificareInterval(h.getUltimaScoatere())){
-        string mesaj=h.getDenumire()+" lipseste din dulap de mai mult de 4 zile!";
+        std::string mesaj=h.getDenumire()+" lipseste din dulap de mai mult de 4 zile!";
     }
 }

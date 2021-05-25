@@ -23,6 +23,28 @@ if(NOT json_POPULATED)
     add_subdirectory(${json_SOURCE_DIR} ${json_BINARY_DIR} EXCLUDE_FROM_ALL)
 endif()
 
-add_executable(SmartDrobe Main/main.cpp Entities/Consumable.cpp Entities/Consumable.h Controller/Server.cpp Controller/Server.h)
+add_executable(SmartDrobe Main/main.cpp Entities/Consumable.cpp Entities/Consumable.h
+        Entities/Haina.cpp
+        Entities/Haina.h
+        Entities/Umeras.cpp
+        Entities/Umeras.h
+        Interface/Interface.cpp
+        Interface/Interface.h
+        Services/DulapManager.cpp
+        Services/DulapManager.h
+        Services/HaineListener.cpp
+        Services/HaineListener.h
+        Controller/Server.cpp
+        Controller/Server.h
+        Services/NotificationManager.cpp
+        Services/NotificationManager.h
+        Services/ProfilDulap.cpp
+        Services/ProfilDulap.h
+        Services/RequestWrapper.cpp
+        Services/RequestWrapper.h
+        Services/SearchEngine.cpp
+        Services/SearchEngine.h
+        Services/Services.cpp
+        Services/Services.h)
 
 target_link_libraries(SmartDrobe PRIVATE curl Threads::Threads -lpistache PRIVATE nlohmann_json::nlohmann_json)
