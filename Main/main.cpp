@@ -26,6 +26,8 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     file.close();
      */
 
+    /*
+
     CURL *curl;
     CURLcode res;
     std::string readBuffer;
@@ -203,9 +205,6 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 //        cout<<item.second.afisare()<<'\n';
 //    hm.generareTinuta(22, false,casual);
 
-    CLI *cli=new CLI();
-    cli->mainMenu(0);
-
     HaineManager hm(4);
     hm.introducereHaina("geaca verde", jacheta, Verde, casual, stofa);
     for(auto &item: hm.getHaine()){
@@ -219,6 +218,10 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 
     stats.stop();
 
+*/
+
+    CLI *cli=new CLI();
+    cli->mainMenu(0);
 
     return 0;
 }
