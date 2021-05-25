@@ -17,7 +17,7 @@ void CLI::mainMenu(const int &menuPage) {
         case 0: {
             if (this->lang == en) {
                 std::cout << "Welcome to SmartDrobe!\n";
-                std::cout << "What can I help you with? \\342\\230\\272 \n" <<
+                std::cout << "What can I help you with? \342\230\272 \n" <<
                           "Enter one of the numbers below to let me know!\n";
                 // \342\230\272 este smiley face
                 std::cout << "1. Consult outfit recommendations for today.\n" <<
@@ -38,7 +38,7 @@ void CLI::mainMenu(const int &menuPage) {
                         else if (newPage == 6) myFile << "6. Access controls and settings.\n";
                         break;
                     } else {
-                        std::cout << "I asked you to choose one of the given numbers! \\342\\230\\272" << std::endl;
+                        std::cout << R"(I asked you to choose one of the given numbers! \342\230\272)" << std::endl;
                         std::cout << "Let's try again!" << std::endl;
                         std::cin.clear();
                         std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
@@ -46,7 +46,7 @@ void CLI::mainMenu(const int &menuPage) {
                 }
             } else {
                 std::cout << "SmartDrobe îți stă la dispoziție!\n";
-                std::cout << "Cum te pot ajuta? \\342\\230\\272 \n"
+                std::cout << "Cum te pot ajuta? \342\230\272\n"
                           << "Introdu unul dintre numerele comenzilor de mai jos!\n";
                 std::cout << "1. Consultă recomandările de ținute pentru azi.\n" <<
                           "2. Verifică starea meteo.\n" <<
@@ -66,7 +66,7 @@ void CLI::mainMenu(const int &menuPage) {
                         else if (newPage == 6) myFile << "6. Accesează setările.\n";
                         break;
                     } else {
-                        std::cout << "Trebuie să alegi una dintre opțiunile valabile! \\342\\230\\272" << std::endl;
+                        std::cout << "Trebuie să alegi una dintre opțiunile valabile! \342\230\272" << std::endl;
                         std::cout << "Să încercăm din nou!" << std::endl;
                         std::cin.clear();
                         std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
@@ -181,7 +181,7 @@ void CLI::mainMenu(const int &menuPage) {
                         else if (contentAction == 3) myFile << "3. Delete a clothing item.\n";
                         break;
                     } else {
-                        std::cout << "Please don't make up your own actions! \\342\\230\\272" << std::endl;
+                        std::cout << "Please don't make up your own actions! \342\230\272" << std::endl;
                         std::cout << "Remember! Only the numbers from my list are available!" << std::endl;
                         std::cin.clear();
                         std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
@@ -269,7 +269,7 @@ void CLI::mainMenu(const int &menuPage) {
                     else if (contentAction == 3) myFile << "3. Delete a clothing item.\n";
                     break;
                     } else {
-                        std::cout << "Te rog nu inventa acțiuni! \\342\\230\\272" << std::endl;
+                        std::cout << "Te rog nu inventa acțiuni! \342\230\272" << std::endl;
                         std::cout << "Ține minte! Numai acțiunile din lista mea sunt acceptate!" << std::endl;
                         std::cin.clear();
                         std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
