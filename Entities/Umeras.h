@@ -12,7 +12,7 @@ private:
 public:
     Umeras(int idx);
     Umeras()=default;
-    int getIndex(){return index;}
+    int getIndex() const {return index;}
     double getGreutate(){return greutateHaina;}
     void setGreutate(double greutate){this->greutateHaina=greutate;}
     bool verificareUmerasGol() const;

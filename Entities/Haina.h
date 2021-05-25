@@ -5,6 +5,7 @@
 #ifndef SMARTDROBE_HAINA_H
 #define SMARTDROBE_HAINA_H
 #include<ctime>
+#include<string>
 enum Culoare{null_culoare,Alb, Negru, Albastru, Verde, Galben, Rosu, Portocaliu, Bleumarin, Gri, Bej, Maro, Mov};
 enum Stil{null_stil,casual, sport, business, formal};
 enum Material{null_material,poliester, bumbac, stofa, denim, matase, in, fas, lana};
@@ -12,7 +13,7 @@ enum PiesaVestimentara{null_piesa,jacheta, top, pantaloni, piesaUnica};
 
 class Haina {
 private:
-    string denumire;
+    std::string denumire;
     PiesaVestimentara piesaVestimentara;
     Culoare culoare;
     Stil stil;
@@ -23,10 +24,10 @@ private:
 
 
 public:
-    Haina(string denumire, PiesaVestimentara piesaV, Culoare culoare, Stil stil, Material material);
+    Haina(std::string denumire, PiesaVestimentara piesaV, Culoare culoare, Stil stil, Material material);
     Haina()=default;
-    string getDenumire(){return denumire;}
-    void setDenumire(string denumire){this->denumire=denumire;}
+    std::string getDenumire(){return denumire;}
+    void setDenumire(std::string denumire){this->denumire=denumire;}
     PiesaVestimentara getPiesaVestimentara(){return piesaVestimentara;}
     void setPiesaVestimentara(PiesaVestimentara piesaVestimentara){this->piesaVestimentara=piesaVestimentara;}
     Culoare getCuloare(){return culoare;}
@@ -42,7 +43,7 @@ public:
     time_t getUltimaScoatere(){return ultimaScoatere;}
     void setUltimaScoatere(time_t t){ultimaScoatere=t;}
     bool verificarePotrivire(Culoare culoare, Stil stil, float temperatura);
-    string afisare();
+    std::string afisare();
     bool operator ==(Haina h);
 
 };

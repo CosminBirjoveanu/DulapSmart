@@ -5,6 +5,8 @@
 #ifndef SMARTDROBE_NOTIFICATIONMANAGER_H
 #define SMARTDROBE_NOTIFICATIONMANAGER_H
 
+#include "../Entities/Haina.h"
+#include <ctime>
 
 class NotificationManager {
 public:

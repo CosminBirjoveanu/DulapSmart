@@ -3,7 +3,7 @@
 //
 
 #include "Haina.h"
-Haina::Haina(string denumire, PiesaVestimentara piesaV, Culoare culoare, Stil stil, Material material){
+Haina::Haina(std::string denumire, PiesaVestimentara piesaV, Culoare culoare, Stil stil, Material material){
     this->denumire=denumire;
     this->piesaVestimentara=piesaV;
     this->culoare=culoare;
@@ -67,8 +67,8 @@ bool Haina:: verificarePotrivire(Culoare culoare, Stil stil, float temperatura){
     return true;
 }
 
-string Haina::afisare(){
-    string str=denumire+" ";
+std::string Haina::afisare(){
+    std::string str=denumire+" ";
     switch (piesaVestimentara) {
         case jacheta:
             str+="jacheta ";
@@ -160,12 +160,12 @@ string Haina::afisare(){
             str+="fas ";
             break;
     }
-    str+="nr purtari:"+to_string(nrPurtari)+" ";
+    str+="nr purtari:"+std::to_string(nrPurtari)+" ";
     disponibil? str+="disponibil ": str+="indisponibil ";
     tm *data = localtime(&ultimaScoatere);
     int luna=(data->tm_mon+1);
     int an=(data->tm_year+1900);
-    str+=to_string(data->tm_mday)+" "+to_string(luna)+" "+to_string(an);
+    str+=std::to_string(data->tm_mday)+" "+std::to_string(luna)+" "+std::to_string(an);
     return str;
 }
 bool Haina::operator ==(Haina h){

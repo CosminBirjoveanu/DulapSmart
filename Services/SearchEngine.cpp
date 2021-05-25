@@ -1,7 +1,7 @@
 #include "SearchEngine.h"
-
-map<int,Haina> SearchEngine::cautare(map<int,Haina> haine, string nume) {
-    map<int,Haina> haineNume;
+using namespace std;
+std::map<int,Haina> SearchEngine::cautare(std::map<int,Haina> haine, std::string nume) {
+    std::map<int,Haina> haineNume;
     for (auto &item : haine)
         if(item.second.getDenumire().find(nume) != std::string::npos)
             haineNume.insert(pair<int,Haina>(item.first, item.second));
