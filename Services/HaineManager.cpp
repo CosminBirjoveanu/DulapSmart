@@ -8,13 +8,29 @@
 void HaineManager::introducereHaina(std::string denumire, PiesaVestimentara piesa, Culoare cul, Stil stil, Material mat){
     Haina* haina = new Haina(denumire, piesa, cul, stil, mat);
 
-
-    haineSalvate.push_back(haina);
     bool ok = adaugarePeUmeras(haina);
-    if(ok==0){
-        std::cout<<"Dulapul este deja plin, nu mai exista umerase disponibile";
+    if(!ok){
+        std::cout<<"Dulapul este deja plin, nu mai exista umerase disponibile\n";
+    }
+    if(ok) {
+        haineSalvate.push_back(haina);
+        std::cout<<"Haina a fost adaugata cu succes\n";
+
     }
 }
+
+void HaineManager::introducereHaina(Haina* haina){
+    bool ok = adaugarePeUmeras(haina);
+    if(!ok){
+        std::cout<<"Dulapul este deja plin, nu mai exista umerase disponibile\n";
+    }
+    if(ok) {
+        haineSalvate.push_back(haina);
+        std::cout<<"Haina a fost adaugata cu succes\n";
+
+    }
+}
+
 void HaineManager::editareHaina(Haina* haina, std::string denumire, PiesaVestimentara piesa, Culoare cul, Stil stil, Material mat){
     haina->setDenumire(denumire);
     haina->setPiesaVestimentara(piesa);
@@ -147,7 +163,7 @@ bool HaineManager::adaugarePeUmeras(Haina* haina){
 
     bool ok=0;
     for (auto x : haine) {
-        if (!x.verificareUmerasGol()) {
+        if (x.verificareUmerasGol()) {
             x.setHaina(haina);
             ok = 1;
             break;

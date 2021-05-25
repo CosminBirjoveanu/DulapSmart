@@ -16,6 +16,7 @@ private:
 public:
     std::vector<Umeras> getHaine(){return haine;}
     void introducereHaina(std::string denumire, PiesaVestimentara piesa, Culoare cul, Stil stil, Material mat);
+    void introducereHaina(Haina*);
     void editareHaina(Haina* haina, std::string denumire, PiesaVestimentara piesa, Culoare cul, Stil stil, Material mat);
     void vizualizareHaina(Haina haina);
     void scoatereHaina(Haina* haina);
