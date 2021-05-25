@@ -206,17 +206,6 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     CLI *cli=new CLI();
     cli->mainMenu(0);
 
-    HaineManager hm(4);
-    hm.introducereHaina("geaca verde", jacheta, Verde, casual, stofa);
-    for(auto &item: hm.getHaine()){
-        if(!(item.second==Haina()))
-            cout<<item.first.getIndex()<<": "<<item.second.afisare()<<'\n';
-    }
-    list<Haina>::iterator it;
-    for(it=hm.getHaineSalvate().begin();it!=hm.getHaineSalvate().end();it++){
-        cout<<it->getDenumire()<<", ";
-        }
-
     stats.stop();
 
 
