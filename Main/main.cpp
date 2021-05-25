@@ -9,7 +9,6 @@
 #include <string>
 #include <thread>
 #include <map>
-
 #include <curl/curl.h>
 
 static size_t WriteCallBack(void *contents, size_t size, size_t nmemb, void *userp)
@@ -30,12 +29,34 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     CURL *curl;
     CURLcode res;
     std::string readBuffer;
+    std::string locationInput;
+
+    bool ok = false;
+    std::cout << "Please input your location in this exact format: Bucharest,ro\n";
+
+    while (!ok) {
+        std::cin >> locationInput;
+        if (std::regex_match(locationInput, std::regex("^[A-Z][a-z]+[,]([a-z]{2})$"))) {
+            ok = true;
+        }
+        else {
+            std::cout << "Please try again. Example: Focsani,ro\n";
+        }
+    }
 
     curl_global_init(CURL_GLOBAL_DEFAULT);
 
+    std::string requestChunk1 = "pro.openweathermap.org/data/2.5/weather?q=";
+    std::string requestChunk2 = "&APPID=e564a233be5f06b32ca4763b2bcda304&units=metric";
+    std::string requestFull = requestChunk1 + locationInput + requestChunk2;
+
+    int n = requestFull.length();
+    char weatherParam[n+1];
+    strcpy(weatherParam,requestFull.c_str());
+
     curl = curl_easy_init();
     if (curl){
-        curl_easy_setopt(curl, CURLOPT_URL, "pro.openweathermap.org/data/2.5/weather?q=Bucharest,ro&APPID=e564a233be5f06b32ca4763b2bcda304");
+        curl_easy_setopt(curl, CURLOPT_URL, weatherParam);
         curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
         curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallBack);
@@ -43,7 +64,7 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 
         res = curl_easy_perform(curl);
 
-        std::cout << readBuffer;
+//        std::cout << readBuffer;
 
         if (res != CURLE_OK) {
             std::cout << stderr << " curl failed\n" << curl_easy_strerror(res);
@@ -83,7 +104,7 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
         std::cerr << " sigwait returns " << status << std::endl;
     }
 
-    /*
+
 
     Haina h1("geaca verde", jacheta, Verde, casual, stofa);
     Haina h2("rochie rosie", piesaUnica, Rosu, formal, matase);
@@ -184,19 +205,20 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 
     CLI *cli=new CLI();
     cli->mainMenu(0);
-*/
-HaineManager hm(4);
-hm.introducereHaina("geaca verde", jacheta, Verde, casual, stofa);
-for(auto &item: hm.getHaine()){
-    if(!(item.second==Haina()))
-        cout<<item.first.getIndex()<<": "<<item.second.afisare()<<'\n';
-}
+
+    HaineManager hm(4);
+    hm.introducereHaina("geaca verde", jacheta, Verde, casual, stofa);
+    for(auto &item: hm.getHaine()){
+        if(!(item.second==Haina()))
+            cout<<item.first.getIndex()<<": "<<item.second.afisare()<<'\n';
+    }
     list<Haina>::iterator it;
     for(it=hm.getHaineSalvate().begin();it!=hm.getHaineSalvate().end();it++){
         cout<<it->getDenumire()<<", ";
         }
 
     stats.stop();
+
 
     return 0;
 }
