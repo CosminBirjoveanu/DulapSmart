@@ -111,7 +111,6 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 //    }
 //
 //    stats.stop();
-
     Haina* h1 = new Haina("geaca verde", jacheta, Verde, casual, stofa);
     Haina* h2 = new Haina("rochie rosie", piesaUnica, Rosu, formal, matase);
     Haina* h3 = new Haina("blugi", pantaloni, Albastru, casual, denim);
@@ -132,6 +131,8 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     Haina* h18 = new Haina("fusta plisata", pantaloni, Gri, formal, stofa);
     Haina* h19 = new Haina("hanorac cu gluga", jacheta, Verde, sport, bumbac);
     Haina* h20 = new Haina("helanca", top, Bej,casual, poliester);
+
+
 
     h4->setNrPurtari(3);
     h5->setNrPurtari(1);
@@ -156,8 +157,6 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     haineManager.editareHaina(h1, "helanca", top, Bej,casual, poliester);
     //CLI *cli=new CLI();
     //cli->mainMenu(0);
-
-
 
 
     return 0;

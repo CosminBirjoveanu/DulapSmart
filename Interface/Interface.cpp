@@ -3,17 +3,21 @@
 #include <stdio.h>
 #include <iostream>
 #include <limits>
+#include <fstream>
 
 using std::numeric_limits;
 
 void CLI::mainMenu(const int &menuPage) {
+
+    std::ofstream myFile("Logfile.txt");
+
     int newPage = -1;
     HaineManager hm(10);
     switch (menuPage) {
         case 0: {
             if (this->lang == en) {
                 std::cout << "Welcome to SmartDrobe!\n";
-                std::cout << "What can I help you with? \\342\\230\\272 \n" <<
+                std::cout << "What can I help you with? \342\230\272 \n" <<
                           "Enter one of the numbers below to let me know!\n";
                 // \342\230\272 este smiley face
                 std::cout << "1. Consult outfit recommendations for today.\n" <<
@@ -25,10 +29,16 @@ void CLI::mainMenu(const int &menuPage) {
                 for (;;) {
                     std::cout << "So which one will it be? ";
                     if (std::cin >> newPage && newPage > 0 && newPage < 7) {
-                        std::cout << "Success!";
+                        std::cout << "Success!/n";
+                        if (newPage == 1) myFile << "1. Consult outfit recommendations for today.\n";
+                        else if (newPage == 2) myFile << "2. Check what the weather is going to be.\n";
+                        else if (newPage == 3) myFile << "3. View my upcoming events.\n";
+                        else if (newPage == 4) myFile << "4. Modify wardrobe.\n";
+                        else if (newPage == 5) myFile <<  "5. See hangers.\n";
+                        else if (newPage == 6) myFile << "6. Access controls and settings.\n";
                         break;
                     } else {
-                        std::cout << "I asked you to choose one of the given numbers! \\342\\230\\272" << std::endl;
+                        std::cout << R"(I asked you to choose one of the given numbers! \342\230\272)" << std::endl;
                         std::cout << "Let's try again!" << std::endl;
                         std::cin.clear();
                         std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
@@ -36,7 +46,7 @@ void CLI::mainMenu(const int &menuPage) {
                 }
             } else {
                 std::cout << "SmartDrobe îți stă la dispoziție!\n";
-                std::cout << "Cum te pot ajuta? \\342\\230\\272 \n"
+                std::cout << "Cum te pot ajuta? \342\230\272\n"
                           << "Introdu unul dintre numerele comenzilor de mai jos!\n";
                 std::cout << "1. Consultă recomandările de ținute pentru azi.\n" <<
                           "2. Verifică starea meteo.\n" <<
@@ -47,10 +57,16 @@ void CLI::mainMenu(const int &menuPage) {
                 for (;;) {
                     std::cout << "Așadar, ce alegi? ";
                     if (std::cin >> newPage && newPage > 0 && newPage < 7) {
-                        std::cout << "Succes!";
+                        std::cout << "Success!/n/n";
+                        if (newPage == 1) myFile << "1. Consultă recomandările de ținute pentru azi.\n";
+                        else if (newPage == 2) myFile << "2. Verifică starea meteo.\n";
+                        else if (newPage == 3) myFile << "3. Vezi evenimentele imediat viitoare.\n";
+                        else if (newPage == 4) myFile << "4. Modifcă articolele din dulap.\n";
+                        else if (newPage == 5) myFile << "5. Vezi umerașele.\n";
+                        else if (newPage == 6) myFile << "6. Accesează setările.\n";
                         break;
                     } else {
-                        std::cout << "Trebuie să alegi una dintre opțiunile valabile! \\342\\230\\272" << std::endl;
+                        std::cout << "Trebuie să alegi una dintre opțiunile valabile! \342\230\272" << std::endl;
                         std::cout << "Să încercăm din nou!" << std::endl;
                         std::cin.clear();
                         std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
@@ -76,8 +92,16 @@ void CLI::mainMenu(const int &menuPage) {
                 std::cout << "Select the line that best describes today's weather by entering its number!\n" <<
                           "Be careful! Entering any number outside the list will not apply any filter! ";
                 std::cin >> weatherFilter;
-                std::cout
-                        << "If you'd like an outfit recommendation based on the event you're attending today, apply one of the filters below:\n";
+                if (weatherFilter == 1) myFile << "1. ice cold, harsh winter, heavy snowing\n";
+                else if (weatherFilter == 2) myFile << "2. cold winter, mild snowing or no snowing at all\n";
+                else if (weatherFilter == 3) myFile << "3. very cold autumn, strong wind, heavy rain\n";
+                else if (weatherFilter == 4) myFile << "4. regular to soft fall, maybe windy and a little rainy\n";
+                else if (weatherFilter == 5) myFile << "5. cool spring, cloudy sky, breezy or even muggy\n";
+                else if (weatherFilter == 6) myFile << "6. warm spring, sunny and pleasant, low humidity\n";
+                else if (weatherFilter == 7) myFile << "7. average summer, hot and bright, clear skies\n";
+                else if (weatherFilter == 8) myFile << "8. burning hot, boiling summer, sweaty heatwaves\n";
+
+                std::cout << "If you'd like an outfit recommendation based on the event you're attending today, apply one of the filters below:\n";
                 std::cout << "1. sports and physical activities\n" <<
                           "2. casual, leisure activities\n" <<
                           "3. professional, business setting\n" <<
@@ -87,6 +111,13 @@ void CLI::mainMenu(const int &menuPage) {
                 std::cout << "Select the line that best describes today's plans by entering its number!\n" <<
                           "Be careful! Entering any number outside the list will not apply any filter! ";
                 std::cin >> eventFilter;
+                if (eventFilter == 1) myFile << "1. sports and physical activities\n";
+                else if (eventFilter == 2) myFile << "2. casual, leisure activities\n";
+                else if (eventFilter == 3) myFile << "3. professional, business setting\n";
+                else if (eventFilter == 4) myFile << "4. cocktail party, clubbing\n";
+                else if (eventFilter == 5) myFile << "5. simple but formal events\n";
+                else if (eventFilter == 6) myFile << "6. fancy, glamorous, highly sophisticated occasions\n";
+
             } else {
                 std::cout
                         << "Aplică unul dintre filtrele de mai jos pentru a primi recomandări pe baza condițiilor meteo:\n";
@@ -101,6 +132,15 @@ void CLI::mainMenu(const int &menuPage) {
                 std::cout << "Selectează cea mai fidelă descriere a vremii de afară introducând numărul ei!\n" <<
                           "Atenție! Dacă tastezi un număr ce nu corespunde niciunei descrieri, nu voi putea aplica niciun filtru! ";
                 std::cin >> weatherFilter;
+                if (weatherFilter == 1) myFile << "1. ice cold, harsh winter, heavy snowing\n";
+                else if (weatherFilter == 2) myFile << "2. cold winter, mild snowing or no snowing at all\n";
+                else if (weatherFilter == 3) myFile << "3. very cold autumn, strong wind, heavy rain\n";
+                else if (weatherFilter == 4) myFile << "4. regular to soft fall, maybe windy and a little rainy\n";
+                else if (weatherFilter == 5) myFile << "5. cool spring, cloudy sky, breezy or even muggy\n";
+                else if (weatherFilter == 6) myFile << "6. warm spring, sunny and pleasant, low humidity\n";
+                else if (weatherFilter == 7) myFile << "7. average summer, hot and bright, clear skies\n";
+                else if (weatherFilter == 8) myFile << "8. burning hot, boiling summer, sweaty heatwaves\n";
+
                 std::cout
                         << "Aplică unul dintre filtrele de mai jos pentru a primi recomandări pe baza activității tale de astăzi:\n";
                 std::cout << "1. sport, activități fizice \n" <<
@@ -112,6 +152,12 @@ void CLI::mainMenu(const int &menuPage) {
                 std::cout << "Selectează cea mai fidelă descriere a programului tău introducând numărul ei!\n" <<
                           "Atenție! Dacă tastezi un număr ce nu corespunde niciunei descrieri, nu voi putea aplica niciun filtru! ";
                 std::cin >> eventFilter;
+                if (eventFilter == 1) myFile << "1. sports and physical activities\n";
+                else if (eventFilter == 2) myFile << "2. casual, leisure activities\n";
+                else if (eventFilter == 3) myFile << "3. professional, business setting\n";
+                else if (eventFilter == 4) myFile << "4. cocktail party, clubbing\n";
+                else if (eventFilter == 5) myFile << "5. simple but formal events\n";
+                else if (eventFilter == 6) myFile << "6. fancy, glamorous, highly sophisticated occasions\n";
             }
             break;
         }
@@ -129,10 +175,13 @@ void CLI::mainMenu(const int &menuPage) {
                 for (;;) {
                     std::cout << "Let me know your intention by typing the number of the upcoming action! ";
                     if (std::cin >> contentAction && contentAction > 0 && contentAction < 4) {
-                        std::cout << "Success!";
+                        std::cout << "Success!/n";
+                        if (contentAction == 1) myFile << "1. Add a new clothing item.\n";
+                        else if (contentAction == 2) myFile << "2. Edit one of the clothing items.\n";
+                        else if (contentAction == 3) myFile << "3. Delete a clothing item.\n";
                         break;
                     } else {
-                        std::cout << "Please don't make up your own actions! \\342\\230\\272" << std::endl;
+                        std::cout << "Please don't make up your own actions! \342\230\272" << std::endl;
                         std::cout << "Remember! Only the numbers from my list are available!" << std::endl;
                         std::cin.clear();
                         std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
@@ -214,9 +263,13 @@ void CLI::mainMenu(const int &menuPage) {
 
                         }
                     }
+
+                    if (contentAction == 1) myFile << "1. Add a new clothing item.\n";
+                    else if (contentAction == 2) myFile << "2. Edit one of the clothing items.\n";
+                    else if (contentAction == 3) myFile << "3. Delete a clothing item.\n";
                     break;
                     } else {
-                        std::cout << "Te rog nu inventa acțiuni! \\342\\230\\272" << std::endl;
+                        std::cout << "Te rog nu inventa acțiuni! \342\230\272" << std::endl;
                         std::cout << "Ține minte! Numai acțiunile din lista mea sunt acceptate!" << std::endl;
                         std::cin.clear();
                         std::cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
@@ -232,4 +285,5 @@ void CLI::mainMenu(const int &menuPage) {
             break;
     }
     mainMenu(newPage);
+    myFile.close();
 }
