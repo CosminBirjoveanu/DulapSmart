@@ -219,6 +219,7 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 
     stats.stop();
 
+
     return 0;
 }
 
