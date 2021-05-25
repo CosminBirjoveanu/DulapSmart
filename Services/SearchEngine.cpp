@@ -1,41 +1,41 @@
 #include "SearchEngine.h"
 using namespace std;
-std::map<Umeras, Haina, Umeras::UmerasCompare> SearchEngine::cautare(std::map<Umeras, Haina, Umeras::UmerasCompare> haine, std::string nume) {
-    std::map<Umeras, Haina, Umeras::UmerasCompare> haineNume;
-    for (auto &item : haine)
-        if(item.second.getDenumire().find(nume) != std::string::npos)
-            haineNume.insert(pair<Umeras,Haina>(item.first, item.second));
+std::vector<Umeras> SearchEngine::cautare(std::vector<Umeras> haine, std::string nume) {
+    std::vector<Umeras> haineNume;
+    for (auto item : haine)
+        if((item.haina)->getDenumire().find(nume) != std::string::npos)
+            haineNume.push_back(item);
     return haineNume;
 }
 
-map<Umeras, Haina, Umeras::UmerasCompare> SearchEngine::cautare(map<Umeras, Haina, Umeras::UmerasCompare> haine, PiesaVestimentara piesa) {
-    map<Umeras, Haina, Umeras::UmerasCompare> haineTip;
+vector<Umeras> SearchEngine::cautare(vector<Umeras> haine, PiesaVestimentara piesa) {
+    vector<Umeras> haineTip;
     for (auto &item : haine)
-        if(item.second.getPiesaVestimentara() == piesa)
-            haineTip.insert(pair<Umeras,Haina>(item.first, item.second));
+        if((item.haina)->getPiesaVestimentara() == piesa)
+            haineTip.push_back(item);
     return haineTip;
 }
 
-map<Umeras, Haina, Umeras::UmerasCompare> SearchEngine::cautare(map<Umeras, Haina, Umeras::UmerasCompare> haine, Culoare culoare) {
-    map<Umeras, Haina, Umeras::UmerasCompare> haineCuloare;
+vector<Umeras> SearchEngine::cautare(vector<Umeras> haine, Culoare culoare) {
+    vector<Umeras> haineCuloare;
     for (auto &item : haine)
-        if(item.second.getCuloare() == culoare)
-            haineCuloare.insert(pair<Umeras, Haina>(item.first, item.second));
+        if((item.haina)->getCuloare() == culoare)
+            haineCuloare.push_back(item);
     return haineCuloare;
 }
 
-map<Umeras, Haina, Umeras::UmerasCompare> SearchEngine::cautare(map<Umeras, Haina, Umeras::UmerasCompare> haine, Stil stil) {
-    map<Umeras, Haina, Umeras::UmerasCompare> haineStil;
+vector<Umeras> SearchEngine::cautare(vector<Umeras> haine, Stil stil) {
+    vector<Umeras> haineStil;
     for (auto &item : haine)
-        if(item.second.getStil() == stil)
-            haineStil.insert(pair<Umeras, Haina>(item.first, item.second));
+        if((item.haina)->getStil() == stil)
+            haineStil.push_back(item);
     return haineStil;
 }
 
-map<Umeras, Haina, Umeras::UmerasCompare> SearchEngine::cautare(map<Umeras, Haina, Umeras::UmerasCompare> haine, Material material) {
-    map<Umeras, Haina, Umeras::UmerasCompare> haineMaterial;
+vector<Umeras> SearchEngine::cautare(vector<Umeras> haine, Material material) {
+    vector<Umeras> haineMaterial;
     for (auto &item : haine)
-        if(item.second.getMaterial() == material)
-            haineMaterial.insert(pair<Umeras, Haina>(item.first, item.second));
+        if((item.haina)->getMaterial() == material)
+            haineMaterial.push_back(item);
     return haineMaterial;
 }

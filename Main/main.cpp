@@ -191,18 +191,6 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
 HaineManager hm(4);
 
     hm.introducereHaina("geaca verde", jacheta, Verde, casual, stofa);
-
-    for(auto &item: hm.getHaine()){
-        Haina h;
-        if(!(item.second==h))
-            cout<<item.first.getIndex()<<": "<<item.second.afisare()<<'\n';
-    }
-    cout<<hm.getHaineSalvate().size();
-    list<Haina>::iterator it;
-    for(it=hm.getHaineSalvate().begin();it!=hm.getHaineSalvate().end();it++){
-        cout<<it->getDenumire()<<", ";
-    }
-
     stats.stop();
 
     return 0;

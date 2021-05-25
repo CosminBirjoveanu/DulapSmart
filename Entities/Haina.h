@@ -38,6 +38,7 @@ public:
     void setMaterial(Material material){this->material=material;}
     int getNrPurtari(){return nrPurtari;}
     void setNrPurtari(int nr_purtari){this->nrPurtari=nr_purtari;}
+    void incrNrPurtari(){this->nrPurtari++;}
     bool getDisponibilitate(){return disponibil;}
     void setDisponibilitate(bool disp){this->disponibil=disp;}
     time_t getUltimaScoatere(){return ultimaScoatere;}
