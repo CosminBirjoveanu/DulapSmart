@@ -10,6 +10,13 @@
 #include <map>
 #include <curl/curl.h>
 
+static size_t WriteCallBack(void *contents, size_t size, size_t nmemb, void *userp)
+{
+    ((std::string*)userp)->append((char*)contents, size * nmemb);
+    return size * nmemb;
+}
+
+
 int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     //Testare functionalitate JSONHandler
     /*ifstream file("../Repositories/TestInput.json");
@@ -18,13 +25,40 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     file.close();
      */
 
+    CURL *curl;
+    CURLcode res;
+    std::string readBuffer;
+
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+
+    curl = curl_easy_init();
+    if (curl){
+        curl_easy_setopt(curl, CURLOPT_URL, "pro.openweathermap.org/data/2.5/weather?q=Bucharest,ro&APPID=e564a233be5f06b32ca4763b2bcda304");
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallBack);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
+
+        res = curl_easy_perform(curl);
+
+        std::cout << readBuffer;
+
+        if (res != CURLE_OK) {
+            std::cout << stderr << " curl failed\n" << curl_easy_strerror(res);
+        }
+        curl_easy_cleanup(curl);
+
+    }
+
+    curl_global_cleanup();
+
     sigset_t signals;
     if (sigemptyset(&signals) != 0
         || sigaddset(&signals, SIGTERM) != 0
         || sigaddset(&signals, SIGINT) != 0
         || sigaddset(&signals, SIGHUP) != 0
         || pthread_sigmask(SIG_BLOCK, &signals, nullptr) != 0) {
-        perror("install signal handler failed");
+        perror(" install signal handler failed");
         return 1;
     }
 
@@ -36,37 +70,15 @@ int main(int argc, char **argv) { //adaugare parametrii linie de comanda
     stats.init(thr);
     stats.start();
 
-    CURL *curl;
-    CURLcode res;
-
-    curl_global_init(CURL_GLOBAL_DEFAULT);
-
-    curl = curl_easy_init();
-    if (curl){
-        curl_easy_setopt(curl, CURLOPT_URL, "pro.openweathermap.org/data/2.5/weather?q=Bucharest,ro&APPID=e564a233be5f06b32ca4763b2bcda304");
-        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
-        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
-       // curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void*) &json);
-
-        res = curl_easy_perform(curl);
-
-        std::cout << "\n" << curl;
-        if (res != CURLE_OK) {
-            std::cout << stderr << " curl failed\n" << curl_easy_strerror(res);
-        }
-        curl_easy_cleanup(curl);
-    }
-    curl_global_cleanup();
-
     int signal = 0;
     int status = sigwait(&signals, &signal);
     if (status == 0)
     {
-        std::cout << "received signal " << signal << std::endl;
+        std::cout << " received signal " << signal << std::endl;
     }
     else
     {
-        std::cerr << "sigwait returns " << status << std::endl;
+        std::cerr << " sigwait returns " << status << std::endl;
     }
 
     /*
